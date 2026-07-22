@@ -1,0 +1,20 @@
+{
+  "name": "oromi-agent-services-mcp",
+  "version": "0.1.2",
+  "mcpName": "io.github.oromi-uk/oromi-agent-services",
+  "description": "MCP server for Oromi Agent Services — 25 pay-per-call UK data, verification and web tools for AI agents (Companies House, Land Registry, EPC, statutory rates, PDF extract, email/domain/VAT/IBAN checks). USDC on Base via x402; quote mode without a wallet.",
+  "type": "module",
+  "bin": { "oromi-agent-services-mcp": "src/index.js" },
+  "files": ["src/"],
+  "keywords": ["mcp", "modelcontextprotocol", "x402", "ai-agents", "uk-data", "companies-house", "land-registry", "micropayments", "usdc", "base"],
+  "author": "Oromi (https://oromi.co.uk)",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.0",
+    "@x402/core": "^2.19.0",
+    "@x402/evm": "^2.19.0",
+    "@x402/fetch": "^2.19.0",
+    "viem": "^2.39.0"
+  }
+}
