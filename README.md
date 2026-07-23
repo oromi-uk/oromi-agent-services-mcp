@@ -35,6 +35,7 @@ Omit the env entirely for quote mode. `OROMI_ORIGIN` overrides the API origin (f
 ## Tools
 
 - **oromi_catalog** — FREE: list every endpoint with price, network and description
+- **oromi_feedback** — FREE: request data or endpoints you wish existed (human-read, genuinely built)
 - **uk_business_search** — $0.005 · Search the UK Companies House register by name or keyword
 - **uk_business_company** — $0.01 · Full company profile: status, SIC codes, registered office, officers
 - **uk_business_name_check** — $0.01 · Business-name availability verdict against the live register

@@ -1,6 +1,6 @@
 {
   "name": "oromi-agent-services-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "mcpName": "io.github.oromi-uk/oromi-agent-services",
   "description": "MCP server for Oromi Agent Services — 25 pay-per-call UK data, verification and web tools for AI agents (Companies House, Land Registry, EPC, statutory rates, PDF extract, email/domain/VAT/IBAN checks). USDC on Base via x402; quote mode without a wallet.",
   "type": "module",

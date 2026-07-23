@@ -2,13 +2,13 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
   "name": "io.github.oromi-uk/oromi-agent-services",
   "description": "25 pay-per-call UK data & verification tools for AI agents. x402 USDC on Base; free quote mode.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "websiteUrl": "https://agents.oromi.co.uk",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "oromi-agent-services-mcp",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "transport": { "type": "stdio" },
       "environmentVariables": [
         {

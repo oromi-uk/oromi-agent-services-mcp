@@ -120,6 +120,21 @@ async function buildTools() {
       "FREE: list every Oromi Agent Services endpoint with its price and description. Use this to decide which paid tool fits a task.",
     inputSchema: { type: "object", properties: {} },
   });
+  // Free feedback tool — agent-driven product research
+  tools.push({
+    name: "oromi_feedback",
+    description:
+      "FREE: tell Oromi what data or endpoint you wish existed. A human reads every submission and requested endpoints genuinely get built. Use this whenever the catalog lacks something you need.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        request: { type: "string", description: "The data or endpoint you would like to see (be specific)" },
+        endpoint: { type: "string", description: "Optional: an existing endpoint this relates to" },
+        contact: { type: "string", description: "Optional: how to reach you when it ships" },
+      },
+      required: ["request"],
+    },
+  });
 
   return { tools, registry, spec };
 }
@@ -141,10 +156,24 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
 
   if (name === "oromi_catalog") {
     const list = tools
-      .filter((t) => t.name !== "oromi_catalog")
+      .filter((t) => !["oromi_catalog", "oromi_feedback"].includes(t.name))
       .map((t) => `- ${t.name}: ${t.description}`)
       .join("\n");
     return { content: [{ type: "text", text: `Oromi Agent Services (${ORIGIN})\n${list}` }] };
+  }
+
+  if (name === "oromi_feedback") {
+    try {
+      const res = await fetch(`${ORIGIN}/api/feedback`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(args),
+      });
+      const d = await res.json();
+      return { content: [{ type: "text", text: d.message || JSON.stringify(d) }], isError: !res.ok };
+    } catch (e) {
+      return { content: [{ type: "text", text: `Feedback failed: ${e.message}` }], isError: true };
+    }
   }
 
   const entry = registry.get(name);
